@@ -1,0 +1,24 @@
+<h2>Frequently Asked Questions</h2>
+<hr>
+<h3>What is it? How does it work?</h3>
+Last.FM nations is a little plug-in for <a href=http://last.fm>Last.fm</a>. It collects the information about your most beloved musicians and bands, finds out where they are from and makes a chart about it. It can take up to 30 seconds to generate your chart! As the result is a PNG image, you can use it wherever you want, especially in your last.fm profile. To do this, copy and paste the HTML or the BBCode code. There is also a text part of the chart where you can read your artists' nationalities from band to band.<br>
+<br><hr>
+<h3>Does my chart refresh sometimes?</h3>
+Yes, every chart refreshes once in a month, to add the recently listened musics. There's no need to do it more often, because Last.fm refreshes it's database monthly too. You can find the next refresh date at the bottom of your chart.<br>
+<br><hr>
+<h3>Some of my artists are unknown. Why?</h3>
+Last.fm nations gets the nationality informations from the musicians' tag clouds. The most of the musicians have tags referring to the nationality, but some - especially the less-known ones - don't. That's why you might have a certain percent saying "unknown". In this case, you can help it by tagging the band. Just click on the \"unknown\" link, and if you are signed in, you can add a new tag. You can do the same with musics with incorrect nationality.<br>
+<br>
+<br><hr>
+<h3>The web host I use <font color=black>(Quote from last.fm nations <a href=http://www.last.fm/group/Last.fm+nations>group</a>)</font></h3>
+ As I couldn't afford to pay a web hosting company to host Last.fm nations, I had to search for a free solution after I finished coding it. It wasn't easy because Last.fm nations requires a few services that a usual web host doesn't provide, such as GD image processing, fopen() from another website and more.
+The first attempt with google was completely unsuccessful, and as response to my second try they suggested me at a professional forum (<a href=http://hup.hu>hup.hu</a>) to give up and try to find a non-free solution.<br><br>
+But then I found (I can't remember where) <a href=http://000webhost.com>000webhost</a> with it's IMHO uninviting name, and it happened to be what I was looking for. It had not just all the extra services I needed, but it didn't show any ads on my site, and it has an effective helping system: if you encounter a problem, you can "submit a ticket" to the administrator who will help if your question is relevant. it was really helpful once. Now, that Last.fm nations has more and more charts, it still works, despite that every time you, or somebody visits your profile, the host has to do some image processing and upload it for you. It happens around 50000 times a day, plus cca. three hundred new registration. There was a week long period when the server had some problem from time to time, but they fixed it and apologized. Since then, everything goes smoothly. So all in all, I'm pretty pleased!<br><br>
+Now, the first reason I'm writing this topic is that <a href=http://000webhost.com>000webhost</a> wrote that they are very thankful if their users support them by recommending their service to others. That's the least I can do to help their case. The other reason is that if you make websites and you decide to register to this free host, you also support me for my work with Last.fm nations, because they pay me for your registration. I really won't get rich of it for sure, but it's good to have a feeling like it was worth to make it :). For this you have to register through this link below.<br>
+<br>
+<a href=http://www.000webhost.com/88707.html>http://www.000webhost.com/88707.html</a><br>
+<br>
+So, that's all I wanted. Big ups for everyone who read it!:-) 
+<br><hr>
+<h3>Will you write more FAQ items?</h3>
+As soon as you ask more. By then, sorry for my English.

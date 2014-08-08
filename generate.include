@@ -1,0 +1,125 @@
+<?php
+//start if there is no username given
+if(!$_GET['user']) {
+print("<h2>Where are your favorite musics from?</h2>
+<table width=100%><tr><td width=50% align=center valign=top>
+<a href=\"?user=LAST.HQ\"><img src=\"show_png_chart.php?user=LAST.HQ\" title=\"music, bands, nations\" border=0></a>
+</td>
+<td width=50% valign=top><h3>Last.fm nations can tell you.</h3>
+Just type in your Last.fm username, press the button, and wait about 30 seconds while it creates your chart.</br><br>
+<FORM method=get action=".$_SERVER['PHP_SELF'].">
+	<INPUT type='hidden' name=\"do\" Value=\"generate\">
+	<INPUT id=text type=text name=user size=20>
+	<INPUT type='submit' Value=\"That's me!\">
+</FORM>
+<script type=\"text/javascript\"><!--
+google_ad_client = \"pub-7773892572223351\";
+/* 180x150, startpage */
+google_ad_slot = \"6211314822\";
+google_ad_width = 180;
+google_ad_height = 150;
+//-->
+</script>
+<script type=\"text/javascript\"
+src=\"http://pagead2.googlesyndication.com/pagead/show_ads.js\">
+</script>
+</td></tr></table>");
+}
+
+//start if username is given
+else {
+$lastfm_user = $_GET['user'];
+include("create.php");
+
+print("<center>
+<h2>Where are <a href=\"http://last.fm/user/".$lastfm_user."\">".$lastfm_user_nice."</a>'s favorite musics from?</h2>
+<table><tr>
+	<td width=50% align=center>
+		<img src=\"show_png_chart.php?user=".strtolower($lastfm_user_url)."\" title=\"music, bands, nations\">
+	</td>
+	<td width=50%>
+		<font class=smalltxt>This is a chart that shows which nations' music do you like. You can insert it into your <a href=http://www.last.fm/settings>profile</a>, or use it anywhere on the Internet. To do so, you have to copy the code below.</font>
+		<br><br>
+		<font class=blue>BBCode</font> (use it at last.fm)<br>
+		<textarea cols=45 rows=4 readonly>
+[url=http://lastfm.net76.net/?user=".$lastfm_user_url."]
+[img]http://lastfm.net76.net/show_png_chart.php?user=".$lastfm_user_url."[/img]
+[/url]</textarea>
+		<br><br>
+		<script type=\"text/javascript\"><!--
+			google_ad_client = \"pub-7773892572223351\";
+			/* Last.fm nations - textarea */
+			google_ad_slot = \"8165777489\";
+			google_ad_width = 234;
+			google_ad_height = 60;
+			//-->
+		</script>
+		<script type=\"text/javascript\"
+			src=\"http://pagead2.googlesyndication.com/pagead/show_ads.js\">
+		</script>
+		<br><br>
+		<font class=blue>HTML code</font> (use it at your webpage)<br>
+		<textarea cols=45 rows=4 readonly>
+<a href=http://lastfm.net76.net/?user=".$lastfm_user_url.">
+<img src=http://lastfm.net76.net/show_png_chart.php?user=".$lastfm_user_url.">
+</a></textarea>
+	</td>
+</tr></table></center>
+<br>
+<h2><a href=\"http://last.fm/user/".$lastfm_user."\">$lastfm_user_nice</a>'s top $k_value bands:</h2>
+<table width=98%><tr><td width=50%><table width=100% class=smalltxt cellspacing=0 cellmargin=2 border=0 >
+<tr class=row_light height=25><td valign=middle align=center><b>%</b></td>
+	<td valign=middle align=center><b>Band</b></td>
+	<td valign=middle align=center><b>Nation</b></td></tr>
+");
+
+$txtfile_handler1 = fopen("txts/".strtolower($lastfm_user), 'r');
+$file_content = fread($txtfile_handler1, filesize(strtolower("txts/".$lastfm_user)));
+if(substr($file_content, 1, 11) !== ".: <a href=") {
+	$lines = explode("\n", $file_content);
+	$darkorlight = "light";
+	for($i = 0; $i < count($lines) - 1; $i++) {
+		if($darkorlight == "dark") $darkorlight = "light";
+		elseif($darkorlight == "light") $darkorlight = "dark";
+		$one_line = explode("\t", $lines[$i]);
+		if($one_line[2] !== "unknown") {
+			print("<tr class=row_$darkorlight><td valign=top align=right>".$one_line[3]."%</td>\n");
+			print("\t<td valign=top><a href=\"http://last.fm/music/".$one_line[0]."\">".$one_line[1]."</a></td>\n");
+			print("\t<td valign=top><a href=\"http://www.last.fm/music/".$one_line[0]."/+tags\" title=\"correct it!\">".$one_line[2]."</a></td></tr>\n");
+			}
+		else {
+			print("<tr class=row_red><td valign=top align=right>".$one_line[3]."%</td>\n");
+			print("\t<td valign=top><a href=\"http://last.fm/music/".$one_line[0]."\" class=row_red>".$one_line[1]."</a></td>\n");
+			print("\t<td valign=top><a href=\"http://www.last.fm/music/".$one_line[0]."/+tags\" class=row_red title=\"tag it!\">unknown!</a></td></tr>\n");
+			}
+		}
+	}
+else { //INNEN LEHET TÖRÖLNI
+	print("<h3>SUPRRISE AT NEXT REFRESH! :-)</h3>\n");
+	print($file_content);
+	} //EDDIG
+fclose($txtfile_handler1);
+print("</table>");
+
+print("
+</td>
+<td valign=top width=50%>
+<script type=\"text/javascript\"><!--
+google_ad_client = \"pub-7773892572223351\";
+/* 336x280, top50 */
+google_ad_slot = \"8677009749\";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script>
+<script type=\"text/javascript\"
+src=\"http://pagead2.googlesyndication.com/pagead/show_ads.js\">
+</script>
+<br>
+<font class=smalltxt>Your most favorite musics are listed here, one by one, displaying their nationality.<br>
+If a band has an <font class=blue>incorrect nationality</font>, or it is marked as <font class=blue>unknown</font>, you can help it by tagging the band. Just click on the link, and if you are signed in, you can add a new tag.
+<br>Important: your change will appear in the next month's chart!</font>
+</td></tr></table>
+");
+}
+?>
